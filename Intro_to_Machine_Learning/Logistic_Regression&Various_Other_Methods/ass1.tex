@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Assignment 1}
+\author{Abhishek Yadav(2015MT10585) }
+\date{February 2018}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+\section{Survey of various classification algorithms}
+\subsection{Logistic Regression}
+It is used for analyzing data sets in which one or more than one variables are used to analyze the data sets and predict an binary outcome.The dependent variable is binary.The main use of the logistic regression is to predict the best fitting model that relates the independent variables to dependent variable\newline
+\textbf{Assumption}\newline
+\begin{itemize}
+    
+ \item It requires the dependent variable to be binary.
+ \item It requires the observation to be independent of each other.
+ \item It also requires the independent variables not to be highly correlated.
+ \item It usually requires large samples.
+\end{itemize}
+\textbf{Advantages}\newline
+\begin{itemize}
+\item The independent variables need not have to be normally distributed.
+\item It also takes care of non-linear effects.
+\item It also requires the independent variables not to be highly correlated.
+\item It usually requires large samples.
+\end{itemize}
+\textbf{Drawbacks}\newline
+\begin{itemize}
+\item It requires very large amount of data to achieve meaningful result.
+\item It can't predict continuous outcome.
+\item It may over-fit the model, it overstate it's correctness of prediction. 
+\end{itemize}
+\textbf{objective Function}\newline
+\textbf{Reference}\newline
+1.Reference 1.\newline
+3.Reference 2 \newline
+\subsection{Decision Tree}
+It is used to classify the data based on many criteria, it takes one criteria and then classify the data into two parts and then again does the same for the remaining parts.It basically builds a tree based on the fields and classifies the data.Then to predict on the test data, it follows the given trees.\newline
+\textbf{Assumption}\newline
+1.nhi pata.\newline
+\textbf{Advantages}\newline
+\begin{itemize}
+\item It specially perform variable screening.
+\item The data requires much less effort from user to prepare.
+\item Non-linear relationship in parameters doesn't affect much the performance.
+\item One of the best and important feature is, it is too easy to understand.
+\end{itemize}
+\textbf{Drawbacks}\newline
+\begin{itemize}
+\item It is unstable, very small change in data can cause very large change in the tree.
+\item Time Complexity of preparing a decision tree is very high, though it is easy to understand but making a decision tree requires much large amount of time.
+\item Even if the given data set perfectly fits the decision tree still the size of decision tree can be very large. 
+4.They are sometimes very inaccurate, sometimes with the same data other classifiers perform much better than the decision tree. 
+\end{itemize}
+\textbf{objective Function}\newline
+\textbf{Reference}\newline
+1.Reference 1.\newline
+3.Reference 2 \newline
+\subsection{Random Forest}
+It creates bunch of random trees by randomly selecting the data from training set and then aggregates the votes to decides the last class of test output.\newline
+\textbf{Assumption}\newline
+1.nhi pata.\newline
+\textbf{Advantages}\newline
+\begin{itemize}
+\item it reduce the chances of over fitting as compare to decision tree, as it uses set of decision trees.
+\item Less variance:We reduce our dependency on one classifier which may not perform well because of inter relation between test and train data.
+\item It is one of the best classifier known as it run efficiently on large data sets.
+\item It gives an estimate as which are the important variables.\newline
+\end{itemize}
+\textbf{Drawbacks}\newline
+\begin{itemize}
+\item It is an predictive modelling tool , if we need an description in our modelling we can't use it we will be using different one.
+\item Time Complexity of preparing a decision tree is very high, though it is easy to understand but making a decision tree requires much large amount of time(Random forest requires making of decision trees).
+\item It can sometimes over fit the data sets with noisy classification tasks.
+\item As we are using multiple decision trees sometimes they don't give lots of insights.
+\end{itemize}
+\textbf{objective Function}\newline
+\textbf{Reference}\newline
+1.Reference 1.\newline
+3.Reference 2 \newline
+
+\subsection{Naive Bayes Classifier}
+It is collection of algorithms which are used to classify the data sets based on bayes theorem, they are group of algorithm and share common characteristics that is the pair of feathers we are going to classify are not dependent. \newline
+\textbf{Assumption}\newline
+\begin{itemize}
+\item We assume that the feathers we are going to classify are independent of each other.
+\item All the features are given importance, none of them are assumed to be irrelevant.
+\end{itemize}
+\textbf{Advantages}\newline
+\begin{itemize}
+1.We can very easily implement it.\newline
+2.It requires small amount of training data to estimate the parameters.\newline
+3.It is very simple and usually produce good results.
+\end{itemize}
+\textbf{Drawbacks}\newline
+1.One of the major drawbacks of naive bayes classification is that it assumes that the feathers are independent of each other.\newline
+2.One of the problem arises if the feathers are continuous we need to make them discrete which may cause problem as we may loss lots of information.\newline
+3.It can't learn interaction between feathers. \newline
+\textbf{objective Function}\newline
+\textbf{Reference}\newline
+1.Reference 1.\newline
+3.Reference 2 \newline
+
+\subsection{Neural Network}
+In a neural network classifier, it consist of layers of neurons,in which input vectors are converted to some output vectors which classify them and each layer takes input from previous and we set bias and weights for corresponding fitting of the data.\newline
+\textbf{Assumption}\newline
+1.Depending on the loss function we may have some assumption on the data, it varies on our function.\newline
+2.We usually don't assume much on the data, we usually do exhaustive search for finding the patterns.\newline
+\textbf{Advantages}\newline
+1.It usually requires less formal statistical training.\newline
+2.It has ability to find out the complex relationship between the dependent and independent variables.\newline
+3.It has ability to predict all the relationships between the variables who are predicting and it has many training algorithms .\newline
+\textbf{Drawbacks}\newline
+1.It has drawbacks as it requires large amount of computation.\newline
+2.It has chances that it can over fit the data sets.\newline
+3.it's various algorithms have various drawbacks. \newline
+\textbf{objective Function}\newline
+\textbf{Reference}\newline
+1.Reference 1.\newline
+3.Reference 2 \newline
+
+\subsection{K-nearest neighbour}
+It stores all the available cases and classify the new cases based on similarity measure it may be distance function or something else. It is also used in statistic also, it has also been used in pattern recognition. \newline
+\textbf{Assumption}\newline
+1.It assumes that those data points which are near to each other distance wise are similar in properties.\newline
+2.Weights are sometimes defined to depict the closeness of the data sets.\newline
+\textbf{Advantages}\newline
+1.It is simple to implement.\newline
+2.It's our choice that we can choose our distances as we want.\newline
+3.It handles it self the multi-class data.\newline
+\textbf{Drawbacks}\newline
+1.We need to search exhaustively to find nearest neighbour.\newline
+2.Space complexity can be a problem too.\newline
+3.We must find a very suitable distance function which can fulfill requirement . \newline
+\textbf{objective Function}\newline
+\textbf{Reference}\newline
+1.Reference 1.\newline
+3.Reference 2 \newline
+
+\end{document}

@@ -1,0 +1,31 @@
+1.Decision Tree
+http://www.brighthubpm.com/project-planning/106005-disadvantages-to-using-decision-trees/
+http://www.simafore.com/blog/bid/62333/4-key-advantages-of-using-decision-trees-for-predictive-analytics
+2.Random Forest
+http://amateurdatascientist.blogspot.in/2012/01/random-forest-algorithm.html
+https://www.quora.com/What-are-some-advantages-of-using-a-random-forest-over-a-decision-tree-given-that-a-decision-tree-is-simpler
+https://medium.com/machine-learning-101/chapter-5-random-forest-classifier-56dc7425c3e1
+3.Logistic Regression 
+https://www.medcalc.org/manual/logistic_regression.php
+https://classroom.synonym.com/disadvantages-logistic-regression-8574447.html
+https://victorfang.wordpress.com/2011/05/10/advantages-and-disadvantages-of-logistic-regression/
+http://www.statisticssolutions.com/assumptions-of-logistic-regression/
+4.Naive Bayes Classifier
+https://www.slideshare.net/ashrafmath/naive-bayes-15644818
+https://www.geeksforgeeks.org/naive-bayes-classifiers/
+5.Neural Networks
+https://www.sciencedirect.com/science/article/pii/S0895435696000029
+6.Kth Nearest Neighbour
+http://www2.cs.man.ac.uk/~raym8/comp37212/main/node264.html
+
+
+1.Accuracy 
+https://medium.com/greyatom/performance-metrics-for-classification-problems-in-machine-learning-part-i-b085d432082b
+2.AUC
+
+1.AIC
+https://www.ncbi.nlm.nih.gov/pubmed/15545256
+http://fastml.com/what-you-wanted-to-know-about-auc/
+
+
+1.
