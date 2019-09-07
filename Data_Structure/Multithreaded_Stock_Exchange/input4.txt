@@ -1,0 +1,3 @@
+2	Kathy	8	buy	5	A	37	T
+3	Alex	10	sell	5	A	27	T
+6	?	9	sell	2	A	44	A

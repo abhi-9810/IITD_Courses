@@ -1,0 +1,16 @@
+addExchange 0 1
+addExchange 0 2
+addExchange 0 3
+queryNthChild 0 0
+queryNthChild 0 2
+addExchange 1 4
+addExchange 1 5
+addExchange 2 6
+addExchange 2 7
+addExchange 2 8
+addExchange 3 9
+queryNthChild 2 0
+queryNthChild 3 0
+switchOnMobile 989 1
+switchOnMobile 999 1
+queryMobilePhoneSet 1

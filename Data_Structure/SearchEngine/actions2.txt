@@ -1,0 +1,3 @@
+addPage stack_datastructure_wiki
+queryFindPagesWhichContainWord delhi
+queryFindPagesWhichContainWord stack
