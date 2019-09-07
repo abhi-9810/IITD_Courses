@@ -1,0 +1,365 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static int a[][];    
+    public static int n;
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        n=s.nextInt();
+        a=new int[n][n];
+        int max=-1;
+        /*for(int i=0;i<n*n;i++){
+            int i1=s.nextInt();
+            int j=s.nextInt();
+            int w=s.nextInt();
+            a[i1][j]=w;
+            if(max<w)
+                max=w;
+        }*/
+        //print();
+        
+        //changing the array for maximum matching
+        changing_array(max);
+        a[0][0]=90;
+        a[0][1]=80;
+        a[0][2]=75;
+        a[0][3]=80;
+        a[1][0]=35;
+        a[1][1]=85;
+        a[1][2]=55;
+        a[1][3]=65;
+        a[2][0]=0;
+        a[2][1]=95;
+        a[2][2]=90;
+        a[2][3]=105;
+        a[3][0]=50;
+        a[3][1]=110;
+        a[3][2]=95;
+        a[3][3]=115;
+        print();
+        System.out.println("\n\n\n");
+        int c[][]=new int[n][n];
+        c=maximum_weight_matching();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(c[i][j]+" ");
+            }
+            System.out.println(" ");
+        }
+        
+    }
+    public static void changing_array(int w){
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++)
+                a[i][j]=w-a[i][j];
+    }
+    public static int [][] maximum_weight_matching(){
+        
+        row_subtract();
+        //print();
+        if(isassign())
+            return give_assignment();
+        col_subtract();
+        //print();
+        //print();
+        if(isassign())
+            return give_assignment();
+        int i=0;
+        print();
+        while(!isassign()){
+            print();
+            System.out.println("\n\n\n");
+            i++;
+            if(i==10)
+                break;
+            min_rows_and_cols();
+        }
+        return give_assignment();
+    }
+    //print a 
+    public static void print(){
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println(" ");
+        }
+    }
+    //give assigment
+    public static int[][] give_assignment(){
+        int row[]=new int[n];
+        int c[][]=new int[n][n];
+        int cols[]=new int[n];
+        LinkedList<Integer> ll= new LinkedList<Integer>();
+        for(int i=0;i<n;i++){
+            int sum=0;
+            for(int j=0;j<n;j++){
+                if(a[i][j]==0)
+                    sum++;
+            }
+            row[i]=sum;
+        }
+        for(int i=0;i<n;i++)
+            ll.add(i);
+        int temp=-1;
+        int col=-1;
+        while(ll.size()!=0){
+            for(int i=0;i<ll.size();i++){
+                if(row[ll.get(i)]==1){
+                    temp=ll.get(i);
+                    ll.remove(i);
+                    break;
+                }
+            }
+            if(temp==-1){
+               temp=ll.get(ll.size()-1);
+                ll.removeLast();
+            }
+            row[temp]=-1;
+            for(int i=0;i<n;i++){
+                if(a[temp][i]==0 && cols[i]!=1)
+                    col=i;
+            }
+            cols[col]=1;
+            c[temp][col]=1;
+            //System.out.println(col);
+            for(int i=0;i<n;i++){
+                if(a[i][col]==0){
+                    row[i]--;
+                }
+                
+            }
+        }
+        
+        return c;
+    }
+    //check if it is perfect matching
+    public static boolean isassign(){
+        int row[]=new int[n];
+        int cols[]=new int[n];
+        LinkedList<Integer> ll= new LinkedList<Integer>();
+        for(int i=0;i<n;i++){
+            int sum=0;
+            for(int j=0;j<n;j++){
+                if(a[i][j]==0)
+                    sum++;
+            }
+            row[i]=sum;
+        }
+        for(int i=0;i<n;i++)
+            ll.add(i);
+        int temp=-1;
+        int col=-1;
+        while(ll.size()!=0){
+            for(int i=0;i<ll.size();i++){
+                if(row[ll.get(i)]==1){
+                    temp=ll.get(i);
+                    ll.remove(i);
+                    break;
+                }
+            }
+            if(temp==-1){
+               temp=ll.get(ll.size()-1);
+                ll.removeLast();
+            }
+            row[temp]=-1;
+            for(int i=0;i<n;i++){
+                if(a[temp][i]==0 && cols[i]!=1)
+                    col=i;
+            }
+            cols[col]=1;
+            //System.out.println(col);
+            for(int i=0;i<n;i++){
+                if(a[i][col]==0){
+                    row[i]--;
+                }
+                if(row[i]==0){
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    //step 1 to subtract min from rows
+    public static void row_subtract(){
+        for(int i=0;i<n;i++){
+            int min=Integer.MAX_VALUE;
+            for(int j=0;j<n;j++){
+                if(min>a[i][j]){
+                    min=a[i][j];
+                }
+            }
+            for(int j=0;j<n;j++)
+                a[i][j]-=min;
+        }
+    }
+    //step 2 to subtract min from columns
+    public static void col_subtract(){
+        for(int i=0;i<n;i++){
+            int min=Integer.MAX_VALUE;
+            for(int j=0;j<n;j++){
+                if(min>a[j][i]){
+                    min=a[j][i];
+                }
+            }
+            for(int j=0;j<n;j++)
+                a[j][i]-=min;
+        }
+    }
+    //step 3 to get minimum rows and column to cover all zeros
+    public static void min_rows_and_cols(){
+        int rows[]=new int[n];
+        int cols[]=new int[n];
+        int assign[]=new int[n];
+        int c1[][]=new int[n][n];
+
+        c1=minlines();
+        for(int i=0;i<n;i++){
+            int sum=0;
+            for(int j=0;j<n;j++){
+                if(c1[i][j]==1)
+                    sum++;
+                if(sum>1)
+                    break;
+            }
+            if(sum>1)
+                rows[i]=1;
+        }
+        for(int i=0;i<n;i++){
+            int sum=0;
+            for(int j=0;j<n;j++){
+                if(c1[j][i]==1)
+                    sum++;
+                if(sum>1)
+                    break;
+            }
+            if(sum>1)
+                cols[i]=1;
+        }
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++){
+                if(c1[i][j]==1 && rows[i]==1 && cols[j]==1)
+                    assign[j]=i;
+            }
+        
+        
+        Stack r = new Stack();
+        Stack c = new Stack();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(c1[i][j]+"  ");  
+              }
+             System.out.println(" ");
+           }
+        int marked_rows[]=new int[n];
+        int marked_cols[]=new int[n];
+        for(int i=0;i<n;i++){
+            if(rows[i]==0){
+                r.push(i);
+                marked_rows[i]=1;
+            }
+        }
+        while(!r.empty()){
+            int k=(int)r.pop();
+            for(int i=0;i<n;i++){
+                if(a[k][i]==0 && marked_cols[i]==0){
+                    c.push(i);
+                    marked_cols[i]=1;
+                }
+            }
+            while(!c.empty()){
+                int temp=(int)c.pop();
+                if(assign[temp]==-1)
+                    continue;
+                if(marked_rows[assign[temp]]==0){
+                    marked_rows[assign[temp]]=1;
+                    r.push(assign[temp]);
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            System.out.println(marked_rows[i]+"  "+marked_cols[i]);
+            System.out.println(rows[i]+"  "+cols[i]);
+        }
+        int min=Integer.MAX_VALUE;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(marked_rows[i]==1 && marked_cols[j]==0){
+                    if(a[i][j]<min)
+                        min=a[i][j];
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+               if(marked_rows[i]==1 && marked_cols[j]==0){
+                        a[i][j]-=min;
+                }
+                if(marked_rows[i]==0 && marked_cols[j]==1){
+                    a[i][j]+=min;
+                }
+            }
+        }
+    }
+    public static int [][] minlines(){
+        int[][] m2 = new int[n][n];
+        int[][] m3 = new int[n][n];
+        for (int row = 0; row < n; row++) {
+            for (int col = 0; col < n; col++) {
+                if (a[row][col] == 0)
+                    m2[row][col] = hvMax(row, col);
+            }
+        }
+        for (int row = 0; row < n; row++) {
+            for (int col = 0; col < n; col++) {
+                if (Math.abs(m2[row][col]) > 0) {
+                    clearNeighbours(m2, m3, row, col);
+                } 
+            }
+        }
+        return m3;
+    }
+    public static int hvMax(int row, int col) {
+        int vertical = 0;
+        int horizontal = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (a[row][i] == 0)
+                horizontal++;
+        }
+
+        // check vertical
+        for (int i = 0; i < n; i++) {
+            if (a[i][col] == 0)
+                vertical++;
+        }
+
+        return vertical > horizontal ? vertical : horizontal * -1;
+    }
+
+    public static void clearNeighbours(int[][] m2, int[][] m3, int row, int col) {
+        // if vertical
+        if (m2[row][col] > 0) {
+            for (int i = 0; i < m2.length; i++) {
+                if (m2[i][col] > 0)
+                    m2[i][col] = 0; // clear neigbor
+                m3[i][col] = 1; // draw line
+            }
+        } else {
+            for (int i = 0; i < m2.length; i++) {
+                if (m2[row][i] < 0)
+                    m2[row][i] = 0; // clear neigbor
+                m3[row][i] = 1; // draw line
+            }
+        }
+
+        m2[row][col] = 0;
+        m3[row][col] = 1;
+    }
+
+}
