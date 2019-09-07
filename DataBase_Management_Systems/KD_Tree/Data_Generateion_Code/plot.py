@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+x=list()
+x.append(2)
+x.append(3)
+x.append(5)
+x.append(10)
+x.append(15)
+x.append(20)
+y=list()
+y.append(0.1344635413)
+y.append(0.2627202426)
+y.append(0.4170878347)
+y.append(0.6262705046)
+y.append(0.7166244246)
+y.append(0.7632614071)
+plt.ylabel('ratio_of_2nd_and_100th_closest_distance')
+plt.xlabel('dimension')
+plt.plot(x,y)
+plt.show()
+
+  

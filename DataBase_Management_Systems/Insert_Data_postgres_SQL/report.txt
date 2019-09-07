@@ -1,0 +1,22 @@
+1. Insert Statement from sql query
+We wrote a python script to generate the temp.text file which contains a sql query "Insert INTO registers..." along 500000 data set. For generating the data set we simply used the logic.
+for(i in range 0 to 500k)
+  student_id=2015MT+str(i%5000+1) //this will generate the student id which will vary from 1 to 5000
+  course_id=MTL+str(i/5000+1) //this will generate the course id will will vary from 1 to 100
+  
+and then used this tupple, with primary key (student_id+course_id).
+
+We then just ran the sql query in pgAdmin and our query was executed in ....s.
+
+To run this query one need to first create a table named registers with two column (student_id,course_id) with primary key primary key (student_id+course_id) then run that python script then copy the data to sql file and run the sql query.
+
+2.Bulk loading 
+We used same logic as earlier to generate the data but this time into a excel file and then later converted that to a csv file and for bulk loading we used "COPY" statement to copy the data from the csv file.
+
+To run this query one need to create a table named registers1 and run the python script to generate the data convert that into csv file then run the sql query along with specifying the path to the csv file.
+
+3.Using JDBC
+
+We wrote a java code to generate the query into string form and ran that query.Basically we used same logic to generate the data and read it from data.csv file and ran the query.
+
+To run this query one need to create a table named registers1 and run the python script to generate the data convert that into text file then run the java file along with specifying the path to the text file.
